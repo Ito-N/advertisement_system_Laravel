@@ -9,7 +9,7 @@
 
                         <div class="card-body">
 
-                        <form class="forms-sample" action="" method="post" enctype="multipart/form-data">@csrf
+                        <form class="forms-sample" action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">@csrf
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
