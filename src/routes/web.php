@@ -22,4 +22,12 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/auth', function () {
+    return view('backend.admin.index');
+});
+
 Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::get('auth/category', function () {
+    return view('backend.category.create');
+});
