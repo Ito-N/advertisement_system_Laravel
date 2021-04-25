@@ -5,13 +5,9 @@
             @include('backend.inc.message')
             <h4>Manage ChildCategory</h4>
             <div class="row justify-content-center">
-
-
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-
-
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -25,7 +21,7 @@
                                     <tbody>
                                         @forelse($childcategories as $childcategory)
                                             <tr>
-                                            <td class="categrory_{{$childcategory->subcategory_id}}">{{$childcategory->subcategory->name}}</td>
+                                            <td class="category_{{$childcategory->subcategory_id}}">{{$childcategory->subcategory->name}}</td>
                                                 <td>{{ $childcategory->name }}</td>
                                                 <td>
                                                     <a href="{{ route('childcategory.edit', [$childcategory->id]) }}"><button
@@ -72,19 +68,11 @@
                                                             </form>
                                                         </div>
                                                     </div>
-
-
-
                                                 </td>
-
-
                                             </tr>
                                         @empty
                                             <td>No childcategory to display</td>
                                         @endforelse
-
-
-
                                     </tbody>
                                 </table>
                             </div>
@@ -93,34 +81,34 @@
                 </div>
             </div>
             <style>
-                td.categrory_1 {
+                td.category_32 {
                     background-color: aliceblue;
                 }
-                td.categrory_2 {
+                td.category_47 {
                     background-color:bisque;
                 }
-                td.categrory_3 {
+                td.category_48 {
                     background-color:thistle;
                 }
-                td.categrory_4 {
+                td.category_49 {
                     background-color:tomato;
                 }
-                td.categrory_5 {
+                td.category_50 {
                     background-color:gray;
                 }
-                td.categrory_6 {
+                td.category_51 {
                     background-color:unset;
                 }
-                td.categrory_7 {
+                td.category_52 {
                     background-color:springgreen;
                 }
-                td.categrory_8 {
+                td.category_53 {
                     background-color:orchid;
                 }
-                td.categrory_9 {
+                td.category_54 {
                     background-color:pink;
                 }
-                td.categrory_10 {
+                td.category_55 {
                     background-color:unset;
                 }
 
