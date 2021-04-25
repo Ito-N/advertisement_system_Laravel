@@ -5,13 +5,9 @@
             @include('backend.inc.message')
             <h4>Manage SubCategory</h4>
             <div class="row justify-content-center">
-
-
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-
-
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -25,8 +21,7 @@
                                     <tbody>
                                         @forelse($subcategories as $subcategory)
                                             <tr>
-                                                <td class="categrory_{{ $subcategory->category_id }}">
-                                                    {{ $subcategory->category->name }}</td>
+                                                <td class="category_{{ $subcategory->category_id }}">{{ $subcategory->category->name }}</td>
                                                 <td>{{ $subcategory->name }}</td>
                                                 <td>
                                                     <a href="{{ route('subcategory.edit', [$subcategory->id]) }}"><button
@@ -74,19 +69,11 @@
                                                             </form>
                                                         </div>
                                                     </div>
-
-
-
                                                 </td>
-
-
                                             </tr>
                                         @empty
                                             <td>No subcategory to display</td>
                                         @endforelse
-
-
-
                                     </tbody>
                                 </table>
                             </div>
@@ -94,36 +81,35 @@
                     </div>
                 </div>
             </div>
+
             <style>
-                td.categrory_1 {
+                td.category_1 {
                     background-color: aliceblue;
                 }
-                td.categrory_2 {
+                td.category_2 {
                     background-color:bisque;
                 }
-                td.categrory_3 {
+                td.category_3 {
                     background-color:thistle;
                 }
-                td.categrory_4 {
+                td.category_4 {
                     background-color:tomato;
                 }
-                td.categrory_5 {
+                td.category_5 {
                     background-color:gray;
                 }
-                td.categrory_6 {
+                td.category_6 {
                     background-color:unset;
                 }
-                td.categrory_7 {
+                td.category_7 {
                     background-color:springgreen;
                 }
-                td.categrory_8 {
+                td.category_8 {
                     background-color:orchid;
                 }
-                td.categrory_9 {
+                td.category_9 {
                     background-color:pink;
                 }
-
-
             </style>
 
         @endsection
