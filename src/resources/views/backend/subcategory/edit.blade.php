@@ -7,15 +7,12 @@
                     @include('backend.inc.message')
                     <h4>Update SubCategory</h4>
                     <div class="card">
-
                         <div class="card-body">
-
                             <form class="forms-sample" action="{{ route('subcategory.update',[$subcategory->id]) }}" method="post">@csrf
                                 @method('PUT')
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                                value="{{$subcategory->name}}">
+                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{$subcategory->name}}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>
@@ -42,7 +39,6 @@
                                         </span>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>

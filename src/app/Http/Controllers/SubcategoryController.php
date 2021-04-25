@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SubcategoryFormRequest;
+use App\Http\Requests\SubcategoryUpdateRequest;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -16,7 +17,8 @@ class SubcategoryController extends Controller
      */
     public function index()
     {
-        //
+        $subcategories = Subcategory::orderBy('category_id')->get();
+        return view('backend.subcategory.index', compact('subcategories'));
     }
 
     /**
@@ -65,7 +67,8 @@ class SubcategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subcategory = Subcategory::find($id);
+        return view('backend.subcategory.edit', compact('subcategory'));
     }
 
     /**
@@ -75,9 +78,14 @@ class SubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SubcategoryUpdateRequest $request, $id)
     {
-        //
+        Subcategory::find($id)->update([
+            'name' => $request->name,
+            'category_id' => $request->category_id
+        ]);
+
+        return redirect()->route('subcategory.index')->with('message', 'Subcategory updated');
     }
 
     /**
@@ -88,6 +96,7 @@ class SubcategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Subcategory::find($id)->delete();
+        return back()->with('message', 'Subcategory removed');
     }
 }
