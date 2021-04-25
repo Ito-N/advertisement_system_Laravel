@@ -5,13 +5,9 @@
             @include('backend.inc.message')
             <h4>Manage Category</h4>
             <div class="row justify-content-center">
-
-
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-
-
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -28,18 +24,18 @@
                                                 <td><img src="{{ Storage::url($category->image) }}"></td>
                                                 <td>{{ $category->name }}</td>
                                                 <td>
-                                                    <a href="{{ route('category.edit', [$category->id]) }}"><button
+                                                    <a href="{{ route('category.edit', [$category->id]) }}">
+                                                        <button
                                                             class="btn btn-info">
                                                             <i class="mdi mdi-table-edit"></i>
                                                         </button>
                                                     </a>
-
                                                 </td>
                                                 <td>
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                                         data-target="#exampleModal{{ $category->id }}">
-                                                         <i class="mdi mdi-delete"></i>
+                                                        Delete <i class="mdi mdi-delete"></i>
                                                     </button>
 
                                                     <!-- Modal -->
@@ -60,7 +56,6 @@
                                                                     </div>
                                                                     <div class="modal-body">
                                                                        <p> Are you sure you want to delete this item ?</p>
-
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
@@ -72,19 +67,11 @@
                                                             </form>
                                                         </div>
                                                     </div>
-
-
-
                                                 </td>
-
-
                                             </tr>
                                         @empty
                                             <td>No category to display</td>
                                         @endforelse
-
-
-
                                     </tbody>
                                 </table>
                             </div>
@@ -94,4 +81,4 @@
             </div>
 
 
-        @endsection
+@endsection

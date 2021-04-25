@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryFormRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -14,7 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        dd('display');
+        $categories = Category::get();
+        return view('backend.category.index', compact('categories'));
     }
 
     /**
@@ -30,12 +34,19 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request\CategoryFormRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryFormRequest $request)
     {
-        dd('store');
+        $image = $request->file('image')->store('public/category');
+        Category::create([
+            'name' => $name = $request->name,
+            'image' => $image,
+            'slug' => Str::slug($name)
+        ]);
+
+        return redirect()->route('category.index')->with('message', 'Category created successfully');
     }
 
     /**
@@ -57,7 +68,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('backend.category.edit', compact('category'));
     }
 
     /**
@@ -69,7 +81,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        if ($request->hasFile('image')) {
+            Storage::delete($category->image);
+            $image = $request->file('image')->store('public/category');
+            $category->update(['name' => $request->name, 'image' => $image]);
+        }
+
+        $category->update(['name' => $request->name]);
+
+        return redirect()->route('category.index')->with('message', 'Category updated successfully');;
     }
 
     /**
@@ -80,6 +101,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        if (Storage::delete($category->image)) {
+            $category->delete();
+        }
+
+        return back()->with('message', 'Category deleted successfully');;
     }
 }
