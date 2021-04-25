@@ -7,9 +7,7 @@
                     @include('backend.inc.message')
                     <h4>Update ChildCategory</h4>
                     <div class="card">
-
                         <div class="card-body">
-
                             <form class="forms-sample" action="{{ route('childcategory.update',[$childcategory->id]) }}" method="post">@csrf
                                 @method('PUT')
                                 <div class="form-group">
@@ -42,7 +40,6 @@
                                         </span>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>

@@ -7,9 +7,7 @@
                     @include('backend.inc.message')
                     <h4>Add ChildCategory</h4>
                     <div class="card">
-
                         <div class="card-body">
-
                             <form class="forms-sample" action="{{ route('childcategory.store') }}" method="post">@csrf
                                 <div class="form-group">
                                     <label for="name">Name</label>
@@ -20,7 +18,6 @@
                                             <strong>
                                                 {{ $message }}
                                             </strong>
-
                                         </span>
                                     @enderror
                                 </div>
@@ -37,11 +34,9 @@
                                             <strong>
                                                 {{ $message }}
                                             </strong>
-
                                         </span>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
@@ -49,7 +44,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
