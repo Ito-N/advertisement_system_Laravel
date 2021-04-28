@@ -78,33 +78,38 @@
     <!-- second navbar -->
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm navbar-hover">
 
-            <a class="navbar-brand" href="">
+        <a class="navbar-brand" href="#">
 
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHover" aria-controls="navbarDD" aria-expanded="false" aria-label="Navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                @for($i = 0; $i < 12; $i++)
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHover" aria-controls="navbarDD" aria-expanded="false" aria-label="Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarHover">
+            <ul class="container-fluid navbar-nav" id="slider-i" >
+                @foreach($menus as $menuItem)
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown_remove_dropdown_class_for_clickable_link"
                         arial-haspopup="true"
                         arial-expanded="false">
-                            Category
+                        {{ $menuItem->name }}
                         </a>
                         <ul class="dropdown-menu">
+                            @foreach($menuItem->subcategories as $subMenuItem)
                             <li>
-                                <a class="dropdown-item dropdown-toggle" href="">Subcategory</a>
+                                <a class="dropdown-item dropdown-toggle" href="">{{ $subMenuItem->name }}</a>
                                 <ul class="dropdown-menu">
+                                    @foreach($subMenuItem->childcategories as $childMenu)
                                     <li>
-                                        <a class="dropdown-item" href="">ChildCategory</a>
+                                        <a class="dropdown-item" href="">{{ $childMenu->name }}</a>
                                     </li>
+                                    @endforeach
                                 </ul>
                             </li>
+                            @endforeach
                         </ul>
                     </li>
-                @endfor
+                @endforeach
             </ul>
         </div>
     </nav>
