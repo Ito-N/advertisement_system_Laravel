@@ -134,6 +134,18 @@
         .navbar-hover .collapse ul ul{position: absolute; top: 100%; left: 0; min-width: 250px; display: none;}
         .navbar-hover .collapse ul ul ul{position: absolute; top: 0; left: 100%; min-width: 250px; display: none;}
     }
+
+    .vertical-menu a {
+        background-color: #fff;
+        color: #000;
+        display: block;
+        padding: 12px;
+        text-decoration: none;
+    }
+    .vertical-menu a:hover {
+        background-color: green;
+        color: #fff;
+    }
 </style>
 </body>
 </html>
