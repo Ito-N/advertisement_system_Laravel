@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApiCategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/category', [ApiCategoryController::class, 'getCategory']);
+Route::get('/subcategory', [ApiCategoryController::class, 'getSubcategory']);
+Route::get('/childcategory', [ApiCategoryController::class, 'getChildcategory']);
