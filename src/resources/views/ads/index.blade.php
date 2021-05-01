@@ -32,7 +32,7 @@
                                     <span class="badge badge-danger">Pending</span>
                                 @endif
                             </td>
-                            <td><button class="btn btn-primary">Edit</button></td>
+                            <td><a href="{{ route('ads.edit', [$ad->id]) }}"><button class="btn btn-primary">Edit</button></a></td>
                             <td><button class="btn btn-info">View</button></td>
                     </tr>
                         @empty

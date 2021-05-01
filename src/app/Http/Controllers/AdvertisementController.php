@@ -72,7 +72,8 @@ class AdvertisementController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ad = Advertisement::find($id);
+        return view('ads.edit', compact('ad'));
     }
 
     /**
