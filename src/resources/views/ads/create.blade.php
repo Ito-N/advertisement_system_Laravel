@@ -52,30 +52,8 @@
                             </div>
                             <label for="file" class="mt-2"><b>Choose category</b></label>
                             <div class="form-inline form-group mt-1">
-                                <div class="col-md-4">
-                                    <select class="form-control" name="category_id">
-                                        <option value=""> choose category</option>
-                                        @foreach(App\Models\Category::all() as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="subcategory_id">
-                                        <option value="">choose subcategory</option>
-                                        @foreach(App\Models\Subcategory::all() as $subcategory)
-                                            <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="childcategory_id">
-                                        <option value="">choose childcategory</option>
-                                        @foreach(App\Models\Childcategory::all() as $childcategory)
-                                            <option value="{{ $childcategory->id }}">{{ $childcategory->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                <category-drop-down />
+
                             </div>
                             <div class="form-group">
                                 <label for="name">Name</label>
@@ -110,32 +88,7 @@
                                 <input type="text" class="form-control" name="listing_location">
                             </div>
                             <label for="file" class="mt-2"><b>Choose address</b></label>
-                            <div class="form-inline form-group mt-1">
-                                <div class="col-md-4">
-                                    <select class="form-control" name="country_id">
-                                        <option value=""> Select country</option>
-                                        @foreach(App\Models\Country::all() as $country)
-                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="state_id">
-                                        <option value="">Select state</option>
-                                        @foreach(App\Models\State::all() as $state)
-                                            <option value="{{ $state->id }}">{{ $state->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="city_id">
-                                        <option value="">Select city </option>
-                                        @foreach(App\Models\City::all() as $city)
-                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                            <address-drop-down />
                             <div class="form-group">
                                 <label for="location">Seller contact number</label>
                                 <input type="number" class="form-control" name="phone_number">
