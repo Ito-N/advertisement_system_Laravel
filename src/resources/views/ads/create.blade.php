@@ -72,7 +72,9 @@
                                 <input type="text" class="form-control" name="listing_location">
                             </div>
                             <label for="file" class="mt-2"><b>Choose address</b></label>
-                            <address-drop-down />
+                            <div class="form-inline form-group mt-1">
+                                <address-drop-down />
+                            </div>
                             <div class="form-group">
                                 <label for="location">Seller contact number</label>
                                 <input type="number" class="form-control" name="phone_number">

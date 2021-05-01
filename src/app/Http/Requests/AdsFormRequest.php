@@ -34,7 +34,7 @@ class AdsFormRequest extends FormRequest
             'category_id' => 'required',
             'product_condition' => 'required',
             'country_id' => 'required',
-            'phone_number' => 'numeric|size:10',
+            'phone_number' => 'numeric',
 
         ];
     }

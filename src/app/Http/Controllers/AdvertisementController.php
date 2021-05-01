@@ -74,6 +74,8 @@ class AdvertisementController extends Controller
     public function edit($id)
     {
         $ad = Advertisement::find($id);
+        $this->authorize('edit-ad', $ad);
+
         return view('ads.edit', compact('ad'));
     }
 
