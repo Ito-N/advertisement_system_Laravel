@@ -41,7 +41,9 @@ Route::group(['prefix' => 'auth'], function () {
 Route::get('/', [MenuController::class, 'Menu']);
 
 // ads
-Route::get('/ads/create', [AdvertisementController::class, 'create'])->middleware('auth');
+Route::get('/ads/create', [AdvertisementController::class, 'create'])->middleware('auth')->name('ads.create');
 Route::post('/ads/store', [AdvertisementController::class, 'store'])->middleware('auth')->name('ads.store');
-Route::get('/ads', [AdvertisementController::class, 'index'])->middleware('auth');
+Route::get('/ads', [AdvertisementController::class, 'index'])->middleware('auth')->name('ads.index');
+Route::get('/ads/{id}/edit', [AdvertisementController::class, 'edit'])->middleware('auth')->name('ads.edit');
+Route::put('/ads/{id}/update', [AdvertisementController::class, 'update'])->middleware('auth')->name('ads.update');
 
