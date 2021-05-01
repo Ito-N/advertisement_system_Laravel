@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\ApiCategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/category', [ApiCategoryController::class, 'getCategory']);
 Route::get('/subcategory', [ApiCategoryController::class, 'getSubcategory']);
 Route::get('/childcategory', [ApiCategoryController::class, 'getChildcategory']);
+
+Route::get('/country', [AddressController::class, 'getCountry']);
+Route::get('/state', [AddressController::class, 'getState']);
+Route::get('/city', [AddressController::class, 'getCity']);

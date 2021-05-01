@@ -50,19 +50,19 @@ export default {
             axios.get('/api/category/')
             .then((response) => {
                 this.categories = response.data
-            }).bind(this)
+            })
         },
         getSubCategories() {
             axios.get('/api/subcategory', {params: {category_id: this.category}})
             .then((response) => {
                 this.subcategories = response.data
-            }).bind(this)
+            })
         },
         getChildCategories() {
             axios.get('/api/childcategory', {params: {subcategory_id: this.subcategory}})
                 .then((response) => {
                     this.childcategories = response.data
-                }).bind(this)
+                })
         }
     }
 
