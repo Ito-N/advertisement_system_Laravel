@@ -16,7 +16,7 @@
                         @endforeach
                     </div>
                 @endif
-                <form action="" method="post" enctype="multipart/form-data">@csrf
+                <form action="{{ route('ads.update',$ad->id) }}" method="post" enctype="multipart/form-data">@csrf
                     @method('PUT')
                     <div class="card">
                         <div class="card-header text-white" style="background-color: red">
@@ -74,8 +74,7 @@
                             </div>
                             <label for="file" class="mt-2"><b>Choose address</b></label>
                             <div class="form-inline form-group mt-1">
-
-                                <country-dropdown />
+                                <address-drop-down />
                             </div>
                             <div class="form-group">
                                 <label for="location">Seller contact number</label>
