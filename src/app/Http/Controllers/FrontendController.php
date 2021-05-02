@@ -27,11 +27,20 @@ class FrontendController extends Controller
         return view('product.subcategory', compact('advertisements', 'filterByChildcategories'));
     }
 
-    public function findBasedOnChildcategory($categorySlug,Subcategory $subcategorySlug,Childcategory $childcategorySlug)
+    public function findBasedOnChildcategory(Request $request, $categorySlug,Subcategory $subcategorySlug,Childcategory $childcategorySlug)
     {
-        $advertisements = $childcategorySlug->advertisements;
+        $advertisementBasedOnFilter = Advertisement::where('childcategory_id', $childcategorySlug->id)
+            ->when($request->minPrice, function ($query, $minPrice) {
+                return $query->where('price', '>=', $minPrice);
+            })->when($request->maxPrice, function ($query, $maxPrice) {
+                return $query->where('price', '<=', $maxPrice);
+            })->get();
+
+        $advertisementWithoutFilter = $childcategorySlug->advertisements;
         // unique()をつけることで、$subcategorySlugにひもづくadvertisementsの重複しているものが削除される
         $filterByChildcategories = $subcategorySlug->advertisements->unique('childcategory_id');
+
+        $advertisements = $request->minPrice || $request->maxPrice ? $advertisementBasedOnFilter : $advertisementWithoutFilter;
 
         return view('product.childcategory', compact('advertisements', 'filterByChildcategories'));
     }
