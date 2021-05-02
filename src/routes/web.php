@@ -4,6 +4,7 @@ use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChildcategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubcategoryController;
@@ -47,8 +48,13 @@ Route::post('/ads/store', [AdvertisementController::class, 'store'])->middleware
 Route::get('/ads', [AdvertisementController::class, 'index'])->middleware('auth')->name('ads.index');
 Route::get('/ads/{id}/edit', [AdvertisementController::class, 'edit'])->middleware('auth')->name('ads.edit');
 Route::put('/ads/{id}/update', [AdvertisementController::class, 'update'])->middleware('auth')->name('ads.update');
+Route::delete('/ads/{id}/delete', [AdvertisementController::class, 'destroy'])->middleware('auth')->name('ads.destroy');
 
 // profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
 Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('update.profile')->middleware('auth');
 
+// frontend
+Route::get('/product/{categorySlug}', [FrontendController::class, 'findBasedOnCategory'])->name('category.show');
+Route::get('/product/{categorySlug}/{subcategorySlug}', [FrontendController::class, 'findBasedOnSubcategory'])->name('subcategory.show');
+Route::get('/product/{categorySlug}/{subcategorySlug}/{childcategorySlug}', [FrontendController::class, 'findBasedOnChildcategory'])->name('childcategory.show');

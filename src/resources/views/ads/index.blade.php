@@ -17,6 +17,7 @@
                         <th scope="col">Status</th>
                         <th scope="col">Edit</th>
                         <th scope="col">View</th>
+                        <th scope="col">Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -57,10 +58,37 @@
                             </td>
                             <td><a href="{{ route('ads.edit', [$ad->id]) }}"><button class="btn btn-primary">Edit</button></a></td>
                             <td><button class="btn btn-info">View</button></td>
-                    </tr>
-                        @empty
-                            <td>You have no any ads</td>
-                        @endforelse
+                            <td>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $ad->id }}">
+                                    delete
+                                </button>
+                                <div class="modal fade" id="exampleModal{{ $ad->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <form action="{{ route('ads.destroy', [$ad->id]) }}" method="post">@csrf
+                                            @method('DELETE')
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Delete confirmation</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure want to delete this item?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-danger">Yes, Delete it</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <td>You have no any ads</td>
+                    @endforelse
                     </tbody>
                 </table>
             </div>

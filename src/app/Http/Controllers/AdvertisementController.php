@@ -17,7 +17,7 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        $ads = Advertisement::where('user_id', auth()->user()->id)->get();
+        $ads = Advertisement::latest()->where('user_id', auth()->user()->id)->get();
         return view('ads.index', compact('ads'));
     }
 
@@ -119,6 +119,9 @@ class AdvertisementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ad = Advertisement::find($id);
+        $ad->delete();
+
+        return back()->with('message', 'Ad deleted successfully');
     }
 }
