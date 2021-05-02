@@ -9,11 +9,21 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    public function findBasedOnSubcategory($categorySlug,Subcategory $subcategorySlug)
+    public function findBasedOnSubcategory(Request $request, $categorySlug,Subcategory $subcategorySlug)
     {
-        $advertisements = $subcategorySlug->advertisements;
+        $advertisementBasedOnFilter = Advertisement::where('subcategory_id', $subcategorySlug->id)
+            ->when($request->minPrice, function ($query, $minPrice) {
+                return $query->where('price', '>=', $minPrice);
+            })->when($request->maxPrice, function ($query, $maxPrice) {
+                return $query->where('price', '<=', $maxPrice);
+            })->get();
+
+        $advertisementWithoutFilter = $subcategorySlug->advertisements;
         // unique()をつけることで、$subcategorySlugにひもづくadvertisementsの重複しているものが削除される
         $filterByChildcategories = $subcategorySlug->advertisements->unique('childcategory_id');
+
+        $advertisements = $request->minPrice || $request->maxPrice ? $advertisementBasedOnFilter : $advertisementWithoutFilter;
+
         return view('product.subcategory', compact('advertisements', 'filterByChildcategories'));
     }
 
