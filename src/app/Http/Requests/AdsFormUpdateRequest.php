@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdsFormRequest extends FormRequest
+class AdsFormUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,14 @@ class AdsFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'feature_image' => 'required|mimes:png,jpg,jpeg',
-            'first_image' => 'required|mimes:png,jpg,jpeg',
-            'second_image' => 'required|mimes:png,jpg,jpeg',
             'name' => 'required|min:3|max:60',
             'description' => 'required|min:3',
+            'category_id' => 'required',
+            'country_id' => 'required',
             'price' => "required|regex:/^\d+(\.\d{1,2})?$/",
             'price_status' => 'required',
-            'category_id' => 'required',
             'product_condition' => 'required',
-            'country_id' => 'required',
             'phone_number' => 'numeric',
-
         ];
     }
 }
