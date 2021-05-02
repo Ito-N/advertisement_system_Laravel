@@ -3,12 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advertisement;
+use App\Models\Category;
 use App\Models\Childcategory;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
+    public function findBasedOnCategory(Category $categorySlug)
+    {
+        $advertisements = $categorySlug->advertisements;
+        $filterBySubcategory = Subcategory::where('category_id', $categorySlug->id)->get();
+
+        return view('product.category', compact('advertisements', 'filterBySubcategory'));
+    }
+
     public function findBasedOnSubcategory(Request $request, $categorySlug,Subcategory $subcategorySlug)
     {
         $advertisementBasedOnFilter = Advertisement::where('subcategory_id', $subcategorySlug->id)

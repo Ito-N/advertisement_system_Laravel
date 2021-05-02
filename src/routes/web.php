@@ -55,5 +55,6 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->mi
 Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('update.profile')->middleware('auth');
 
 // frontend
+Route::get('/product/{categorySlug}', [FrontendController::class, 'findBasedOnCategory'])->name('category.show');
 Route::get('/product/{categorySlug}/{subcategorySlug}', [FrontendController::class, 'findBasedOnSubcategory'])->name('subcategory.show');
 Route::get('/product/{categorySlug}/{subcategorySlug}/{childcategorySlug}', [FrontendController::class, 'findBasedOnChildcategory'])->name('childcategory.show');
