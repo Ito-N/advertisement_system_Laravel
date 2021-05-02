@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChildcategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubcategoryController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -46,4 +47,8 @@ Route::post('/ads/store', [AdvertisementController::class, 'store'])->middleware
 Route::get('/ads', [AdvertisementController::class, 'index'])->middleware('auth')->name('ads.index');
 Route::get('/ads/{id}/edit', [AdvertisementController::class, 'edit'])->middleware('auth')->name('ads.edit');
 Route::put('/ads/{id}/update', [AdvertisementController::class, 'update'])->middleware('auth')->name('ads.update');
+
+// profile
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
+Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('update.profile')->middleware('auth');
 

@@ -20,13 +20,31 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        @forelse($ads as $key =>$ad)
+                    @forelse($ads as $key =>$ad)
+                        <tr>
                             <th scope="row">{{ $key + 1 }}</th>
-                            <td>
-                                <img src="{{ Storage::url($ad->feature_image) }}" width="130">
-                                <img src="{{ Storage::url($ad->first_image) }}" width="130">
-                                <img src="{{ Storage::url($ad->second_image) }}" width="130">
+                            <td style="width: 200px;height:130px;">
+                                <div id="carouselExampleControls{{ $ad->id }}" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="{{ Storage::url($ad->feature_image) }}" width="130">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{ Storage::url($ad->first_image) }}" width="130">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{ Storage::url($ad->second_image) }}" width="130">
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleControls{{ $ad->id }}" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleControls{{ $ad->id }}" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
                             </td>
                             <td>{{ $ad->name }}</td>
                             <td style="color: blue">USD {{ $ad->price }}</td>
