@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cohensive\Embed\Facades\Embed;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,5 +15,36 @@ class Advertisement extends Model
     public function childcategory()
     {
         return $this->hasOne(Childcategory::class, 'id', 'childcategory_id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function displayVideoFromLink()
+    {
+        $embed = Embed::make($this->link)->parseUrl();
+        if (!$embed) {
+            return;
+        }
+
+        $embed->setAttribute(['width' => 500]);
+        return $embed->getHtml();
     }
 }

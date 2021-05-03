@@ -53,4 +53,11 @@ class FrontendController extends Controller
 
         return view('product.childcategory', compact('advertisements', 'filterByChildcategories'));
     }
+
+    public function show($id, $slug)
+    {
+        $advertisement = Advertisement::where('id', $id)->where('slug', $slug)->first();
+
+        return view('/product.show', compact('advertisement'));
+    }
 }

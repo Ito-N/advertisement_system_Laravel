@@ -58,3 +58,4 @@ Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('upda
 Route::get('/product/{categorySlug}', [FrontendController::class, 'findBasedOnCategory'])->name('category.show');
 Route::get('/product/{categorySlug}/{subcategorySlug}', [FrontendController::class, 'findBasedOnSubcategory'])->name('subcategory.show');
 Route::get('/product/{categorySlug}/{subcategorySlug}/{childcategorySlug}', [FrontendController::class, 'findBasedOnChildcategory'])->name('childcategory.show');
+Route::get('/products/{id}/{slug}', [FrontendController::class, 'show'])->name('product.view');
