@@ -57,7 +57,7 @@
                                 @endif
                             </td>
                             <td><a href="{{ route('ads.edit', [$ad->id]) }}"><button class="btn btn-primary">Edit</button></a></td>
-                            <td><button class="btn btn-info">View</button></td>
+                            <td><a href="{{ route('product.view', [$ad->id, $ad->slug]) }}" target="_blank"><button class="btn btn-info">View</button></a></td>
                             <td>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $ad->id }}">
                                     delete

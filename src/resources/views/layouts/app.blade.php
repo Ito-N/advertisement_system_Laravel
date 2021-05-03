@@ -18,6 +18,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Tiny MCE -->
+    <script src="https://cdn.tiny.cloud/1/t7qgx08hawdaykd4fi54hhy48taqd6sccxghs5f45veomzfp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/t7qgx08hawdaykd4fi54hhy48taqd6sccxghs5f45veomzfp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
+
 </head>
 <body>
 <div id="app">
