@@ -28,14 +28,13 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/auth', function () {
-    return view('backend.admin.index');
-});
-
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 // admin
-Route::group(['prefix' => 'auth'], function () {
+Route::group(['prefix' => 'auth', 'middleware' => 'admin'], function () {
+    Route::get('/', function () {
+        return view('backend.admin.index');
+    });
     Route::resource('/category', CategoryController::class);
     Route::resource('/subcategory', SubcategoryController::class);
     Route::resource('/childcategory', ChildcategoryController::class);
