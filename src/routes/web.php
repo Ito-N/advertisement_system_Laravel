@@ -4,6 +4,7 @@ use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChildcategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontAdsController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
@@ -40,7 +41,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::resource('/childcategory', ChildcategoryController::class);
 });
 
-Route::get('/', [MenuController::class, 'Menu']);
+Route::get('/', [FrontAdsController::class, 'index']);
 
 // ads
 Route::get('/ads/create', [AdvertisementController::class, 'create'])->middleware('auth')->name('ads.create');
