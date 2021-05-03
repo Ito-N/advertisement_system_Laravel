@@ -21,7 +21,6 @@
 
     <!-- Tiny MCE -->
     <script src="https://cdn.tiny.cloud/1/t7qgx08hawdaykd4fi54hhy48taqd6sccxghs5f45veomzfp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script src="https://cdn.tiny.cloud/1/t7qgx08hawdaykd4fi54hhy48taqd6sccxghs5f45veomzfp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
         tinymce.init({
@@ -69,9 +68,15 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if (Auth::check() && Auth::user()->isadmin === 1)
+                                    <a class="dropdown-item" href="{{ url('auth/category') }}">{{ __('Dashboard') }}</a>
+                                @else
+                                    <a class="dropdown-item" href="{{ url('ads') }}">{{ __('ads') }}</a>
+                                @endif
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                   document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChildcategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontAdsController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
@@ -27,20 +28,19 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/auth', function () {
-    return view('backend.admin.index');
-});
-
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 // admin
-Route::group(['prefix' => 'auth'], function () {
+Route::group(['prefix' => 'auth', 'middleware' => 'admin'], function () {
+    Route::get('/', function () {
+        return view('backend.admin.index');
+    });
     Route::resource('/category', CategoryController::class);
     Route::resource('/subcategory', SubcategoryController::class);
     Route::resource('/childcategory', ChildcategoryController::class);
 });
 
-Route::get('/', [MenuController::class, 'Menu']);
+Route::get('/', [FrontAdsController::class, 'index']);
 
 // ads
 Route::get('/ads/create', [AdvertisementController::class, 'create'])->middleware('auth')->name('ads.create');

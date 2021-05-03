@@ -47,4 +47,34 @@ class Advertisement extends Model
         $embed->setAttribute(['width' => 500]);
         return $embed->getHtml();
     }
+
+    public function scopeFirstFourAdsInCaurosel($query, $categoryId)
+    {
+        return $query->where('category_id', $categoryId)
+            ->orderByDesc('id')->take(4)->get();
+    }
+
+    public function scopeSecondFourAdsInCaurosel($query, $categoryId)
+    {
+        $firstAds = $this->scopeFirstFourAdsInCaurosel($query, $categoryId);
+
+        return $query->where('category_id', $categoryId)
+            ->whereNotIn('id', $firstAds->pluck('id')->toArray())
+            ->take(4)->get();
+    }
+
+    public function scopeFirstFourAdsInCauroselForElectronic($query, $categoryId)
+    {
+        return $query->where('category_id', $categoryId)
+            ->orderByDesc('id')->take(4)->get();
+    }
+
+    public function scopeSecondFourAdsInCauroselForElectronic($query, $categoryId)
+    {
+        $firstAds = $this->scopeFirstFourAdsInCaurosel($query, $categoryId);
+
+        return $query->where('category_id', $categoryId)
+            ->whereNotIn('id', $firstAds->pluck('id')->toArray())
+            ->take(4)->get();
+    }
 }
