@@ -21,7 +21,6 @@
 
     <!-- Tiny MCE -->
     <script src="https://cdn.tiny.cloud/1/t7qgx08hawdaykd4fi54hhy48taqd6sccxghs5f45veomzfp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script src="https://cdn.tiny.cloud/1/t7qgx08hawdaykd4fi54hhy48taqd6sccxghs5f45veomzfp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
         tinymce.init({
@@ -69,6 +68,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('ads') }}">{{ __('Ads') }}</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
