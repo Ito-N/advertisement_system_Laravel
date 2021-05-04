@@ -16,13 +16,14 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <textarea class="form-control" placeholder="please write your message..."></textarea>
+                        <textarea v-model="body" class="form-control" placeholder="please write your message..."></textarea>
+                        <p v-if="successMessage">Your message has been sent.</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">
                             Close
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" class="btn btn-danger" @click.prevent="sendMessage()">
                             Send message
                         </button>
                     </div>
@@ -36,5 +37,24 @@
 export default {
     props: ['sellerName', 'userId', 'receiverId', 'adId'],
 
-}
+    data() {
+        return {
+            body: '',
+            successMessage: false,
+        }
+    },
+    methods: {
+        sendMessage() {
+            axios.post('/send/message', {
+                body: this.body,
+                receiverId: this.receiverId,
+                userId: this.userId,
+                adId: this.adId
+            }).then((response) => {
+                this.body = ''
+                this.successMessage = true
+            })
+        }
+    }
+};
 </script>

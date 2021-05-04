@@ -2063,8 +2063,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['sellerName', 'userId', 'receiverId', 'adId']
+  props: ['sellerName', 'userId', 'receiverId', 'adId'],
+  data: function data() {
+    return {
+      body: '',
+      successMessage: false
+    };
+  },
+  methods: {
+    sendMessage: function sendMessage() {
+      var _this = this;
+
+      axios.post('/send/message', {
+        body: this.body,
+        receiverId: this.receiverId,
+        userId: this.userId,
+        adId: this.adId
+      }).then(function (response) {
+        _this.body = '';
+        _this.successMessage = true;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -38456,9 +38478,67 @@ var render = function() {
               _vm._m(0)
             ]),
             _vm._v(" "),
-            _vm._m(1),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.body,
+                    expression: "body"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { placeholder: "please write your message..." },
+                domProps: { value: _vm.body },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.body = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.successMessage
+                ? _c("p", [_vm._v("Your message has been sent.")])
+                : _vm._e()
+            ]),
             _vm._v(" "),
-            _vm._m(2)
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-secondary",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [
+                  _vm._v(
+                    "\n                        Close\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.sendMessage()
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Send message\n                    "
+                  )
+                ]
+              )
+            ])
           ])
         ])
       ]
@@ -38482,38 +38562,6 @@ var staticRenderFns = [
       },
       [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-body" }, [
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: { placeholder: "please write your message..." }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("\n                        Close\n                    ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "button" } },
-        [_vm._v("\n                        Send message\n                    ")]
-      )
-    ])
   }
 ]
 render._withStripped = true
