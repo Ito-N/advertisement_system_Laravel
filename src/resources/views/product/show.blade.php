@@ -64,9 +64,10 @@
                     @if (Auth()->check())
                         @if (auth()->user()->id != $advertisement->user_id)
                             <message seller-name="{{ $advertisement->user->name }}"
-                                     :user-id="{{ auth()->user()->id }}" :receiver-id="{{ $advertisement->user->id }}"
-                                     :ad-id="{{ $advertisement->id }}">
-                            </message>
+                                :user-id="{{ auth()->user()->id }}"
+                                :receiver-id="{{ $advertisement->user->id }}"
+                                :ad-id="{{ $advertisement->id }}"
+                            ></message>
                         @endif
                     @endif
                 <span>

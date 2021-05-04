@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontAdsController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SendMessageController;
 use App\Http\Controllers\SubcategoryController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -58,3 +59,6 @@ Route::get('/product/{categorySlug}', [FrontendController::class, 'findBasedOnCa
 Route::get('/product/{categorySlug}/{subcategorySlug}', [FrontendController::class, 'findBasedOnSubcategory'])->name('subcategory.show');
 Route::get('/product/{categorySlug}/{subcategorySlug}/{childcategorySlug}', [FrontendController::class, 'findBasedOnChildcategory'])->name('childcategory.show');
 Route::get('/products/{id}/{slug}', [FrontendController::class, 'show'])->name('product.view');
+
+// message
+Route::post('/send/message', [SendMessageController::class, 'store']);
