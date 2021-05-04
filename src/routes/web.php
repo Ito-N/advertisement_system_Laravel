@@ -6,7 +6,6 @@ use App\Http\Controllers\ChildcategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontAdsController;
 use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubcategoryController;
 use App\Models\Category;
