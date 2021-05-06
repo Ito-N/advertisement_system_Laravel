@@ -105,6 +105,9 @@ export default {
         axios.get('/users').then((response)=>{
             this.users = response.data
         })
+        setInterval(()=>{
+            this.showMessage(this.selectedUserId)
+        },1000)
     },
     methods: {
         showMessage(userId){

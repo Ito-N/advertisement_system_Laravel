@@ -2137,6 +2137,9 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/users').then(function (response) {
       _this.users = response.data;
     });
+    setInterval(function () {
+      _this.showMessage(_this.selectedUserId);
+    }, 1000);
   },
   methods: {
     showMessage: function showMessage(userId) {
