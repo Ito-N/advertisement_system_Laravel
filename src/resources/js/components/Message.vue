@@ -45,6 +45,9 @@ export default {
     },
     methods: {
         sendMessage() {
+            if (this.body === '') {
+                alert('please write your message')
+            }
             axios.post('/send/message', {
                 body: this.body,
                 receiverId: this.receiverId,

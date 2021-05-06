@@ -61,4 +61,8 @@ Route::get('/product/{categorySlug}/{subcategorySlug}/{childcategorySlug}', [Fro
 Route::get('/products/{id}/{slug}', [FrontendController::class, 'show'])->name('product.view');
 
 // message
-Route::post('/send/message', [SendMessageController::class, 'store']);
+Route::post('/send/message', [SendMessageController::class, 'store'])->middleware('auth');
+Route::get('messages', [SendMessageController::class, 'index'])->middleware('auth')->name('message.index');
+Route::get('/users', [SendMessageController::class, 'chatWithThisUser']);
+Route::get('/message/user/{id}', [SendMessageController::class, 'showMessages']);
+Route::post('/start-conversation', [SendMessageController::class, 'startConversation']);
