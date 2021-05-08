@@ -1,8 +1,18 @@
 <template>
     <div>
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
-            Send Message
-        </button>
+        <p v-if="showViewConversationOnSuccess">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
+                Send Message
+            </button>
+        </p>
+        <p v-else>
+            <a href="/messages">
+            <button type="button" class="btn btn-success">
+                View Conversation
+            </button>
+            </a>
+        </p>
+
         <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -41,6 +51,7 @@ export default {
         return {
             body: '',
             successMessage: false,
+            showViewConversationOnSuccess: true
         }
     },
     methods: {
@@ -56,6 +67,7 @@ export default {
             }).then((response) => {
                 this.body = ''
                 this.successMessage = true
+                this.showViewConversationOnSuccess = false
             })
         }
     }
