@@ -31,13 +31,9 @@
                                         {{ message.user.name }}
                                     </strong>
                                     <small class="right text-muted">
-                                        <span
-                                            class="glyphicon glyphicon-time"
-                                        ></span
-                                        >
-                                        date
-                                    </small
-                                    >
+                                        <span class="glyphicon glyphicon-time"></span>
+                                        {{ moment(message.created_at).format("DD-MM-YYYY") }}
+                                    </small>
                                 </div>
                                 <p class="text-center" v-if="message.ads">
                                     <a :href=" '/products/' + message.ads.id+'/' + message.ads.slug " target="_blank">
@@ -60,7 +56,8 @@
                             <div class="chat-body clearfix">
                                 <div class="header clearfix">
                                     <small class="left text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>date
+                                        <span class="glyphicon glyphicon-time"></span>
+                                        {{ moment(message.created_at).format("DD-MM-YYYY") }}
                                     </small>
                                     <strong class="primary-font">
                                         {{ message.user.name }}
@@ -98,13 +95,15 @@
 </template>
 
 <script>
+import moment from 'moment';
 export default {
     data(){
         return{
-            users:[],
-            messages:[],
-            selectedUserId:'',
-            body:'',
+            users: [],
+            messages: [],
+            selectedUserId: '',
+            body: '',
+            moment: moment,
         }
     },
     mounted() {
