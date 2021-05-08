@@ -72,6 +72,7 @@
                                     <a class="dropdown-item" href="{{ url('auth/category') }}">{{ __('Dashboard') }}</a>
                                 @else
                                     <a class="dropdown-item" href="{{ url('ads') }}">{{ __('ads') }}</a>
+                                    <a class="dropdown-item" href="{{ url('messages') }}">{{ __('Messages') }}</a>
                                 @endif
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
