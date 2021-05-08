@@ -2,13 +2,13 @@
     <div>
         <p v-if="showViewConversationOnSuccess">
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
-                Send Message
+                <i class="fas fa-envelope"></i>Send Message
             </button>
         </p>
         <p v-else>
             <a href="/messages">
             <button type="button" class="btn btn-success">
-                View Conversation
+                <i class="fas fa-paper-plane"></i>View Conversation
             </button>
             </a>
         </p>
