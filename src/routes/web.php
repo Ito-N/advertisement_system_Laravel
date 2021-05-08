@@ -54,6 +54,9 @@ Route::delete('/ads/{id}/delete', [AdvertisementController::class, 'destroy'])->
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
 Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('update.profile')->middleware('auth');
 
+// user ads
+Route::get('/ads/{userId}/view', [FrontendController::class, 'viewUserAds'])->name('show.user.ads');
+
 // frontend
 Route::get('/product/{categorySlug}', [FrontendController::class, 'findBasedOnCategory'])->name('category.show');
 Route::get('/product/{categorySlug}/{subcategorySlug}', [FrontendController::class, 'findBasedOnSubcategory'])->name('subcategory.show');

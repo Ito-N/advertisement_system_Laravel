@@ -59,7 +59,9 @@
                 <p>Listing location: {{ $advertisement->listing_location }}</p>
                 <hr>
                 <img src="/img/man.jpg" width="120">
-                <p>{{ $advertisement->user->name }}</p>
+                <p>
+                    <a href="{{ route('show.user.ads', [$advertisement->user_id]) }}">{{ $advertisement->user->name }}</a>
+                </p>
                 <p>
                     @if ($advertisement->phone_number)
                         <show-phone-number :phone-number="{{ $advertisement->phone_number }}"></show-phone-number>
