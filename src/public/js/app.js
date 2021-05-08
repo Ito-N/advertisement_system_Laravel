@@ -60778,21 +60778,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _vm.showViewConversationOnSuccess
-      ? _c("p", [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-danger",
-              attrs: {
-                type: "button",
-                "data-toggle": "modal",
-                "data-target": "#staticBackdrop"
-              }
-            },
-            [_vm._v("\n            Send Message\n        ")]
-          )
-        ])
-      : _c("p", [_vm._m(0)]),
+      ? _c("p", [_vm._m(0)])
+      : _c("p", [_vm._m(1)]),
     _vm._v(" "),
     _c(
       "div",
@@ -60830,7 +60817,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(1)
+              _vm._m(2)
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
@@ -60905,11 +60892,34 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-danger",
+        attrs: {
+          type: "button",
+          "data-toggle": "modal",
+          "data-target": "#staticBackdrop"
+        }
+      },
+      [
+        _c("i", { staticClass: "fas fa-envelope" }),
+        _vm._v("Send Message\n        ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "/messages" } }, [
       _c(
         "button",
         { staticClass: "btn btn-success", attrs: { type: "button" } },
-        [_vm._v("\n            View Conversation\n        ")]
+        [
+          _c("i", { staticClass: "fas fa-paper-plane" }),
+          _vm._v("View Conversation\n        ")
+        ]
       )
     ])
   },
