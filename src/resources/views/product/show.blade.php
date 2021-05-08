@@ -59,23 +59,24 @@
                 <p>Listing location: {{ $advertisement->listing_location }}</p>
                 <hr>
                 <img src="/img/man.jpg" width="120">
-                <p>{{ $advertisement->user->name }}</p>
+                <p>
+                    <a href="{{ route('show.user.ads', [$advertisement->user_id]) }}">{{ $advertisement->user->name }}</a>
+                </p>
                 <p>
                     @if ($advertisement->phone_number)
-                    </i>
-                    <show-phone-number :phone-number="{{ $advertisement->phone_number }}"></show-phone-number>
+                        <show-phone-number :phone-number="{{ $advertisement->phone_number }}"></show-phone-number>
                     @endif
                 </p>
                 <p>
                     @if (Auth()->check())
                         @if (auth()->user()->id != $advertisement->user_id)
                             <message seller-name="{{ $advertisement->user->name }}"
-                                     :user-id="{{ auth()->user()->id }}" :receiver-id="{{ $advertisement->user->id }}"
-                                     :ad-id="{{ $advertisement->id }}">
-                            </message>
+                                :user-id="{{ auth()->user()->id }}"
+                                :receiver-id="{{ $advertisement->user->id }}"
+                                :ad-id="{{ $advertisement->id }}"
+                            ></message>
                         @endif
                     @endif
-
                 <span>
                 @if (Session::has('message'))
                     <div class="alert alert-success">

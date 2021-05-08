@@ -6,8 +6,8 @@ use App\Http\Controllers\ChildcategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontAdsController;
 use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SendMessageController;
 use App\Http\Controllers\SubcategoryController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -54,8 +54,18 @@ Route::delete('/ads/{id}/delete', [AdvertisementController::class, 'destroy'])->
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
 Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('update.profile')->middleware('auth');
 
+// user ads
+Route::get('/ads/{userId}/view', [FrontendController::class, 'viewUserAds'])->name('show.user.ads');
+
 // frontend
 Route::get('/product/{categorySlug}', [FrontendController::class, 'findBasedOnCategory'])->name('category.show');
 Route::get('/product/{categorySlug}/{subcategorySlug}', [FrontendController::class, 'findBasedOnSubcategory'])->name('subcategory.show');
 Route::get('/product/{categorySlug}/{subcategorySlug}/{childcategorySlug}', [FrontendController::class, 'findBasedOnChildcategory'])->name('childcategory.show');
 Route::get('/products/{id}/{slug}', [FrontendController::class, 'show'])->name('product.view');
+
+// message
+Route::post('/send/message', [SendMessageController::class, 'store'])->middleware('auth');
+Route::get('messages', [SendMessageController::class, 'index'])->middleware('auth')->name('message.index');
+Route::get('/users', [SendMessageController::class, 'chatWithThisUser']);
+Route::get('/message/user/{id}', [SendMessageController::class, 'showMessages']);
+Route::post('/start-conversation', [SendMessageController::class, 'startConversation']);
