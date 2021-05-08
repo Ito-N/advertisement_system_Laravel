@@ -16,7 +16,7 @@
                 <div class="card-header text-center">
                     <span>Chat </span>
                 </div>
-                <div class="card-body chat-msg" v-chat-scroll="{always: false, smooth: true, scrollonremoved:true}">
+                <div v-if="selectedUserId" class="card-body chat-msg" v-chat-scroll="{always: false, smooth: true, scrollonremoved:true}">
                     <ul class="chat"  v-for="(message,index) in messages" :key="index">
                         <li class="sender clearfix" v-if="message.selfOwned">
                             <span class="chat-img left clearfix mx-2" v-if="message.user.avatar">
@@ -73,6 +73,10 @@
                         </li>
                     </ul>
                 </div>
+                <div style="min-height:250px;" v-else>
+                    <p class="text-center">Please select the user to chat.</p>
+                </div>
+
                 <div class="card-footer">
                     <div class="input-group">
                         <input
