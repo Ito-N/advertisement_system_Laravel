@@ -8,6 +8,7 @@ use App\Http\Controllers\FrontAdsController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SendMessageController;
+use App\Http\Controllers\SocialLoginController;
 use App\Http\Controllers\SubcategoryController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -69,3 +70,7 @@ Route::get('messages', [SendMessageController::class, 'index'])->middleware('aut
 Route::get('/users', [SendMessageController::class, 'chatWithThisUser']);
 Route::get('/message/user/{id}', [SendMessageController::class, 'showMessages']);
 Route::post('/start-conversation', [SendMessageController::class, 'startConversation']);
+
+// login with facebook
+Route::get('auth/facebook', [SocialLoginController::class, 'facebookRedirect']);
+Route::get('auth/facebook/callback', [SocialLoginController::class, 'loginWithFacebook']);
