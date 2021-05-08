@@ -29,6 +29,8 @@ class AddSlugToAdvertisements extends Migration
     {
         Schema::table('advertisements', function (Blueprint $table) {
             $table->dropColumn('slug');
+            $table->string('link')->nullable(false)->change();
+            $table->string('phone_number')->nullable(false)->change();
         });
     }
 }
