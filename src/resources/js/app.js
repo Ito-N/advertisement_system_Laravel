@@ -13,6 +13,7 @@ Vue.component('category-drop-down', require('./components/CategoryDropDown.vue')
 Vue.component('address-drop-down', require('./components/AddressDropDown.vue').default);
 Vue.component('message', require('./components/Message.vue').default);
 Vue.component('conversation', require('./components/Conversation.vue').default);
+Vue.component('show-phone-number', require('./components/ShowPhoneNumber.vue').default);
 
 const app = new Vue({
     el: '#app',

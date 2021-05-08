@@ -61,6 +61,11 @@
                 <img src="/img/man.jpg" width="120">
                 <p>{{ $advertisement->user->name }}</p>
                 <p>
+                    @if ($advertisement->phone_number)
+                        <show-phone-number :phone-number="{{ $advertisement->phone_number }}"></show-phone-number>
+                    @endif
+                </p>
+                <p>
                     @if (Auth()->check())
                         @if (auth()->user()->id != $advertisement->user_id)
                             <message seller-name="{{ $advertisement->user->name }}"
