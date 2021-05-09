@@ -23,4 +23,12 @@ class SaveAdController extends Controller
 
         return view('seller.saved-ads', compact('ads'));
     }
+
+    public function removeAd(Request $request)
+    {
+        DB::table('advertisement_user')->where('user_id',auth()->id())
+            ->where('advertisement_id',$request->adId)->delete();
+
+        return back()->with('message','Ad removed form the save list');
+    }
 }

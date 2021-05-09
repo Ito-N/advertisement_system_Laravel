@@ -24,7 +24,7 @@
                                    target="_blank">{{ $ad->name }}</a>
                             </td>
                             <td>
-                                <form action="" method="post">@csrf
+                                <form action="{{ route('ad.remove') }}" method="post">@csrf
                                     <input type="hidden" name="adId" value="{{ $ad->id }}">
                                     <button class="btn btn-danger" type="submit">Remove</button>
                                 </form>
