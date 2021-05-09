@@ -84,6 +84,11 @@
                         @endif
                     @endif
                     <span>
+                        @if (Session::has('message'))
+                            <div class="alert alert-success">
+                                {{ Session::get('message') }}
+                            </div>
+                        @endif
                         <a href="" data-toggle="modal" data-target="#exampleModal">Report this ad</a>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -99,7 +104,8 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>Select reason</label>
-                                            <select class="form-control" name="reason">
+                                            <select class="form-control" name="reason" required>
+                                                <option value="Fraud">select</option>
                                                 <option value="Fraud">fraud</option>
                                                 <option value="Duplicate">duplicate</option>
                                                 <option value="Spam">spam</option>
@@ -111,9 +117,9 @@
                                         <div class="form-group">
                                             <label>Your Email</label>
                                             @if (Auth::check())
-                                                <input type="email" class="form-control" value="{{ Auth::user()->email }}" readonly>
+                                                <input type="email" name="email" class="form-control" value="{{ Auth::user()->email }}" readonly>
                                             @else
-                                                <input type="email" class="form-control">
+                                                <input type="email" name="email" class="form-control">
                                             @endif
                                         </div>
                                         <div class="form-group">
