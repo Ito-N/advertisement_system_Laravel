@@ -5,6 +5,7 @@ namespace App\Models;
 use Cohensive\Embed\Facades\Embed;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Advertisement extends Model
 {
@@ -35,6 +36,19 @@ class Advertisement extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function userads()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function didUserSavedAd()
+    {
+        return DB::table('advertisement_user')
+            ->where('user_id', auth()->user()->id)
+            ->where('advertisement_id', $this->id)
+            ->first();
     }
 
     public function displayVideoFromLink()
