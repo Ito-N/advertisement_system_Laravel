@@ -43,7 +43,7 @@ Route::group(['prefix' => 'auth', 'middleware' => 'admin'], function () {
     Route::resource('/childcategory', ChildcategoryController::class);
 
     // adminlisting
-    Route::get('/allads', [AdminListingController::class, 'index']);
+    Route::get('/allads', [AdminListingController::class, 'index'])->name('all.ads');
 });
 
 Route::get('/', [FrontAdsController::class, 'index']);
