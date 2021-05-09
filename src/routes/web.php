@@ -1,5 +1,6 @@
 <?php
 
+use \App\Http\Controllers\AdminListingController;
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChildcategoryController;
@@ -40,6 +41,9 @@ Route::group(['prefix' => 'auth', 'middleware' => 'admin'], function () {
     Route::resource('/category', CategoryController::class);
     Route::resource('/subcategory', SubcategoryController::class);
     Route::resource('/childcategory', ChildcategoryController::class);
+
+    // adminlisting
+    Route::get('/allads', [AdminListingController::class, 'index']);
 });
 
 Route::get('/', [FrontAdsController::class, 'index']);
