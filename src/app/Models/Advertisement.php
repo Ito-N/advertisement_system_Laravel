@@ -37,6 +37,11 @@ class Advertisement extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function userads()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     public function displayVideoFromLink()
     {
         $embed = Embed::make($this->link)->parseUrl();

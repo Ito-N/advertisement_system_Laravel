@@ -57,6 +57,7 @@
                 <p>Price: ${{ $advertisement->price }} USD, {{ $advertisement->price_status }}</p>
                 <p>Posted: {{ $advertisement->created_at->diffForHumans() }}</p>
                 <p>Listing location: {{ $advertisement->listing_location }}</p>
+                <save-ad :ad-id="{{ $advertisement->id }}" :user-id="{{ auth()->user()->id }}"></save-ad>
                 <hr>
                 <img src="/img/man.jpg" width="120">
                 <p>

@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontAdsController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SaveAdController;
 use App\Http\Controllers\SendMessageController;
 use App\Http\Controllers\SocialLoginController;
 use App\Http\Controllers\SubcategoryController;
@@ -74,3 +75,6 @@ Route::post('/start-conversation', [SendMessageController::class, 'startConversa
 // login with facebook
 Route::get('auth/facebook', [SocialLoginController::class, 'facebookRedirect']);
 Route::get('auth/facebook/callback', [SocialLoginController::class, 'loginWithFacebook']);
+
+// save ad
+Route::post('/ad/save', [SaveAdController::class, 'saveAd']);
