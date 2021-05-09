@@ -88,6 +88,7 @@
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
+                                <form action="{{ route('report.ad') }}" method="post">@csrf
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Report wrong with this ad</h5>
@@ -109,22 +110,29 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Your Email</label>
-                                            <input type="email" class="form-control">
+                                            @if (Auth::check())
+                                                <input type="email" class="form-control" value="{{ Auth::user()->email }}" readonly>
+                                            @else
+                                                <input type="email" class="form-control">
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label>Your Message</label>
-                                            <textarea name="message" class="form-control"></textarea>
+                                            <textarea name="message" class="form-control" required></textarea>
                                         </div>
+                                        <input type="hidden" name="ad_id" value="{{ $advertisement->id }}">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" class="btn btn-danger">Report this ad</button>
                                     </div>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </span>
                 </p>
+            </div>
         </div>
     </div>
 @endsection

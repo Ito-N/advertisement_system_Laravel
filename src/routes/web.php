@@ -1,10 +1,11 @@
 <?php
 
-use \App\Http\Controllers\AdminListingController;
+use App\Http\Controllers\AdminListingController;
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChildcategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FraudController;
 use App\Http\Controllers\FrontAdsController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
@@ -12,9 +13,7 @@ use App\Http\Controllers\SaveAdController;
 use App\Http\Controllers\SendMessageController;
 use App\Http\Controllers\SocialLoginController;
 use App\Http\Controllers\SubcategoryController;
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,3 +84,6 @@ Route::get('auth/facebook/callback', [SocialLoginController::class, 'loginWithFa
 Route::post('/ad/save', [SaveAdController::class, 'saveAd']);
 Route::post('/ad/remove', [SaveAdController::class, 'removeAd'])->name('ad.remove');
 Route::get('/saved-ads', [SaveAdController::class, 'getMyAds'])->name('saved.ad');
+
+// report this ad
+Route::post('/report-this-ad', [FraudController::class, 'store'])->name('report.ad');
