@@ -83,14 +83,62 @@
                             ></message>
                         @endif
                     @endif
-                <span>
-                @if (Session::has('message'))
-                    <div class="alert alert-success">
-                        {{ Session::get('message') }}
-                    </div>
-                @endif
-                </span>
+                    <span>
+                        @if (Session::has('message'))
+                            <div class="alert alert-success">
+                                {{ Session::get('message') }}
+                            </div>
+                        @endif
+                        <a href="" data-toggle="modal" data-target="#exampleModal">Report this ad</a>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <form action="{{ route('report.ad') }}" method="post">@csrf
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Report wrong with this ad</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Select reason</label>
+                                            <select class="form-control" name="reason" required>
+                                                <option value="Fraud">select</option>
+                                                <option value="Fraud">fraud</option>
+                                                <option value="Duplicate">duplicate</option>
+                                                <option value="Spam">spam</option>
+                                                <option value="Wrong-category">Wrong Category</option>
+                                                <option value="Offensive">offensive</option>
+                                                <option value="Other">other</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Your Email</label>
+                                            @if (Auth::check())
+                                                <input type="email" name="email" class="form-control" value="{{ Auth::user()->email }}" readonly>
+                                            @else
+                                                <input type="email" name="email" class="form-control">
+                                            @endif
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Your Message</label>
+                                            <textarea name="message" class="form-control" required></textarea>
+                                        </div>
+                                        <input type="hidden" name="ad_id" value="{{ $advertisement->id }}">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-danger">Report this ad</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </span>
                 </p>
+            </div>
         </div>
     </div>
 @endsection

@@ -5,13 +5,9 @@
             @include('backend.inc.message')
             <h4>Manage Advertisements</h4>
             <div class="row justify-content-center">
-
-
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-
-
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -19,9 +15,7 @@
                                             <th>Seller</th>
                                             <th>Image</th>
                                             <th>Name</th>
-                                           
                                             <th>View</th>
-
                                             <th>Delete</th>
                                             <th>Published date</th>
                                         </tr>
@@ -38,10 +32,8 @@
                                                     <a target="_blank"
                                                         href="{{ route('show.user.ads', $ad->user->id) }}">{{ $ad->user->name }}</a>
                                                 </td>
-
                                                 <td><img src="{{ Storage::url($ad->feature_image) }}"></td>
                                                 <td>{{ $ad->name }}</td>
-
                                                 <td>
                                                     <a target="_blank"
                                                         href="{{ route('product.view', [$ad->id, $ad->slug]) }}">
@@ -85,31 +77,22 @@
                                                             </form>
                                                         </div>
                                                     </div>
-
-
-
                                                 </td>
                                                 <td>
                                                     {{$ad->created_at->format('Y-m-d')}}
                                                 </td>
-
-
                                             </tr>
                                         @empty
                                             <td>No ads to display</td>
                                         @endforelse
-
-
-
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 {{ $ads->links() }}
             </div>
-
-
-        @endsection
+        </div>
+    </div>
+@endsection
