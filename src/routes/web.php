@@ -43,6 +43,9 @@ Route::group(['prefix' => 'auth', 'middleware' => 'admin'], function () {
 
     // adminlisting
     Route::get('/allads', [AdminListingController::class, 'index'])->name('all.ads');
+
+    // listing report
+    Route::get('/reported-ad', [FraudController::class, 'index'])->name('all.reported.ads');
 });
 
 Route::get('/', [FrontAdsController::class, 'index']);

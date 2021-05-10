@@ -17,4 +17,12 @@ class FraudController extends Controller
         ]);
         return back()->with('message','Your report has been recored. Thank you for the feedback');
     }
+
+    //for admin section
+    Public function index()
+    {
+        $ads = Fraud::paginate(20);
+
+        return view('backend.fraud.index',compact('ads'));
+    }
 }

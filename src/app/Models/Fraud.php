@@ -10,4 +10,9 @@ class Fraud extends Model
     use HasFactory;
 
     protected $fillable = ['reason', 'message', 'ad_id', 'email'];
+
+    public function fraudad()
+    {
+        return $this->belongsTo(Advertisement::class, 'ad_id', 'id');
+    }
 }
