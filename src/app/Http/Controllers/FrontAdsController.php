@@ -17,7 +17,8 @@ class FrontAdsController extends Controller
         $categoryElectronic = Category::categoryElectronic();
         $firstAdsForElectronics = Advertisement::firstFourAdsInCauroselForElectronic($categoryElectronic->id);
         $secondsAdsForElectronics = Advertisement::secondFourAdsInCauroselForElectronic($categoryElectronic->id);
+        $categories = Category::get();
 
-        return view('index', compact('category', 'firstAds', 'secondsAds', 'categoryElectronic', 'firstAdsForElectronics', 'secondsAdsForElectronics'));
+        return view('index', compact('category', 'firstAds', 'secondsAds', 'categoryElectronic', 'firstAdsForElectronics', 'secondsAdsForElectronics', 'categories'));
     }
 }
