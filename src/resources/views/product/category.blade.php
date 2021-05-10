@@ -18,12 +18,12 @@
                 <br>
             </div>
             <div class="col-md-9">
+                @include('breadcrumb')
                 <div class="row">
                     @forelse($advertisements as $advertisement)
                         <div class="col-3">
-                            <a href="">
-                                <img src="{{Storage::url($advertisement->feature_image)}}"
-                                     class="img-thumbnail" >
+                            <a href="{{route('product.view',[$advertisement->id,$advertisement->slug])}}">
+                                <img src="{{Storage::url($advertisement->feature_image)}}" class="img-thumbnail">
                                 <p class="text-center  card-footer" style="color: blue;">
                                     {{$advertisement->name}}/USD {{$advertisement->price}}
                                 </p>
