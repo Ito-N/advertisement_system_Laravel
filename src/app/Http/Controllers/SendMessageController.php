@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class SendMessageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
     public function store(Request $request)
     {
         Message::create([

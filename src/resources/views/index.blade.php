@@ -18,6 +18,20 @@
 </div>
 
 <div class="container mt-5">
+    <h1>Top category</h1>
+    <div class="row text-center mt-5">
+        @foreach ($categories as $category)
+            <div class="col-lg-3 col-md-4 col-lg" id="card">
+                <a href="{{ route('category.show', $category->slug) }}" class="d-block mb-4 h-100">
+                    <img class="img-fluid img-thumbnail" src="{{Storage::url($category->image)}}">
+                    <p class="">{{ $category->name }}</p>
+                </a>
+            </div>
+        @endforeach
+    </div>
+</div>
+
+<div class="container mt-5">
     <span>
         <h1>Car</h1>
         <a href="{{ route('category.show', $category->slug) }}" class="float-right">View all</a>
@@ -116,7 +130,11 @@
         </a>
     </div>
 </div>
-
-
-
 @endsection
+
+<style>
+    #card a:hover {
+        background-color: #ccc;
+        color: #ffffff;
+    }
+</style>
