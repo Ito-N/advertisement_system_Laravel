@@ -1,22 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-<div class="slider" style="margin-top: -25px;">
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="slider/slider1.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="slider/slider2.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="slider/slider3.png" class="d-block w-100" alt="...">
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="container mt-5">
     <h1>Top category</h1>
     <div class="row text-center mt-5">
