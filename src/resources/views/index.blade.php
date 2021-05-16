@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container mt-5">
-    <h1>Top category</h1>
+    <h1>トップ・カテゴリー</h1>
     <div class="row text-center mt-5">
         @foreach ($categories as $category)
             <div class="col-lg-3 col-md-4 col-lg" id="card">
@@ -16,7 +16,7 @@
 
 <div class="container mt-5">
     <span>
-        <h1>Car</h1>
+        <h1>車</h1>
         <a href="{{ route('category.show', $category->slug) }}" class="float-right">View all</a>
     </span>
     <br>
@@ -66,7 +66,7 @@
 
 <div class="container mt-5">
     <span>
-        <h1>Electronics</h1>
+        <h1>電機</h1>
         <a href="{{ route('category.show', $categoryElectronic->slug) }}" class="float-right">View all</a>
     </span>
     <br>

@@ -52,13 +52,13 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">ログイン</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">会員登録</a>
                             </li>
                         @endif
                     @else
@@ -69,16 +69,16 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @if (Auth::check() && Auth::user()->isadmin === 1)
-                                    <a class="dropdown-item" href="{{ url('auth/category') }}">{{ __('Dashboard') }}</a>
+                                    <a class="dropdown-item" href="{{ url('auth/category') }}">ダッシュボード</a>
                                 @else
-                                    <a class="dropdown-item" href="{{ url('ads') }}">{{ __('ads') }}</a>
-                                    <a class="dropdown-item" href="{{ url('messages') }}">{{ __('Messages') }}</a>
+                                    <a class="dropdown-item" href="{{ url('ads') }}">商品一覧</a>
+                                    <a class="dropdown-item" href="{{ url('messages') }}">広告主に連絡</a>
                                 @endif
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    ログアウト
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
