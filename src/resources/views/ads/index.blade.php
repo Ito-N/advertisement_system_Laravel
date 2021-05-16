@@ -11,13 +11,13 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">View</th>
-                        <th scope="col">Delete</th>
+                        <th scope="col">イメージ</th>
+                        <th scope="col">名前</th>
+                        <th scope="col">価格</th>
+                        <th scope="col">状態</th>
+                        <th scope="col">編集</th>
+                        <th scope="col">詳細</th>
+                        <th scope="col">削除</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -48,19 +48,19 @@
                                 </div>
                             </td>
                             <td>{{ $ad->name }}</td>
-                            <td style="color: blue">USD {{ $ad->price }}</td>
+                            <td style="color: blue">¥ {{ $ad->price }}</td>
                             <td>
                                 @if ($ad->published == 1)
-                                    <span class="badge badge-success">Published</span>
+                                    <span class="badge badge-success">公開</span>
                                 @else
-                                    <span class="badge badge-danger">Pending</span>
+                                    <span class="badge badge-danger">非公開</span>
                                 @endif
                             </td>
-                            <td><a href="{{ route('ads.edit', [$ad->id]) }}"><button class="btn btn-primary">Edit</button></a></td>
-                            <td><a href="{{ route('product.view', [$ad->id, $ad->slug]) }}" target="_blank"><button class="btn btn-info">View</button></a></td>
+                            <td><a href="{{ route('ads.edit', [$ad->id]) }}"><button class="btn btn-primary">編集</button></a></td>
+                            <td><a href="{{ route('product.view', [$ad->id, $ad->slug]) }}" target="_blank"><button class="btn btn-info">詳細</button></a></td>
                             <td>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $ad->id }}">
-                                    delete
+                                    削除
                                 </button>
                                 <div class="modal fade" id="exampleModal{{ $ad->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -68,17 +68,17 @@
                                             @method('DELETE')
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Delete confirmation</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">確認</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Are you sure want to delete this item?
+                                                    削除してよろしいでしょうか？
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-danger">Yes, Delete it</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                                    <button type="submit" class="btn btn-danger">削除</button>
                                                 </div>
                                             </div>
                                         </form>

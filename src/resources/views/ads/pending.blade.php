@@ -11,8 +11,8 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Edit</th>
+                        <th scope="col">名前</th>
+                        <th scope="col">編集</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -27,7 +27,7 @@
                             </td>
                         </tr>
                     @empty
-                        <td>You have no any pending ads</td>
+                        <td>保留している広告はありません</td>
                     @endforelse
                     </tbody>
                 </table>

@@ -13,12 +13,12 @@
     </div>
     <hr style="border:2px solid blue;">
     <div class="vertical-menu">
-        <a href="#">Dashboard</a>
-        <a href="{{ route('profile') }}" class="{{ request()->is('profile') ? 'active' : '' }}">Profile</a>
-        <a href="{{ route('ads.create') }}" class="{{ request()->is('ads/create') ? 'active' : '' }}">Create ads</a>
-        <a href="{{ route('ads.index') }}" class="{{ request()->is('ads') ? 'active' : '' }}">Published ads</a>
-        <a href="{{ route('pending.ad') }}" class="{{ request()->is('ad-pending') ? 'active' : '' }}">Pending ads</a>
-        <a href="{{ route('saved.ad') }}" class="{{ request()->is('saved-ads') ? 'active' : '' }}">Saved ads</a>
-        <a href="{{ route('messages') }}" class="{{ request()->is('messages') ? 'active' : '' }}">Message</a>
+        <a href="#">ダッシュボード</a>
+        <a href="{{ route('profile') }}" class="{{ request()->is('profile') ? 'active' : '' }}">プロフィール</a>
+        <a href="{{ route('ads.create') }}" class="{{ request()->is('ads/create') ? 'active' : '' }}">広告掲載</a>
+        <a href="{{ route('ads.index') }}" class="{{ request()->is('ads') ? 'active' : '' }}">広告商品一覧</a>
+        <a href="{{ route('pending.ad') }}" class="{{ request()->is('ad-pending') ? 'active' : '' }}">保留一覧</a>
+        <a href="{{ route('saved.ad') }}" class="{{ request()->is('saved-ads') ? 'active' : '' }}">保存一覧</a>
+        <a href="{{ route('messages') }}" class="{{ request()->is('messages') ? 'active' : '' }}">広告主に連絡</a>
     </div>
 </div>
