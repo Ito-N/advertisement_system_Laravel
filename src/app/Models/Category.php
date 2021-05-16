@@ -28,11 +28,11 @@ class Category extends Model
 
     public function scopeCategoryCar($query)
     {
-        return $query->where('name', 'car')->first();
+        return $query->where('name', '車')->first();
     }
 
     public function scopeCategoryElectronic($query)
     {
-        return $query->where('name', 'electronic')->first();
+        return $query->where('name', '電機')->first();
     }
 }
